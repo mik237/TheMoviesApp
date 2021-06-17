@@ -24,9 +24,10 @@ class MoviesViewModel @Inject constructor(
         private val viewStateMapper : ViewStateMapperImpl
 ): ViewModel() {
 
-    var mappedData: List<Movie> = emptyList()
-
     private val _moviesListLiveData = MutableLiveData<Status<*>>()
+
+    var selectedMovie = MutableLiveData<Movie>()
+    var mappedData: List<Movie> = emptyList()
     val statusLiveData : LiveData<Status<*>> = _moviesListLiveData
 
     fun fetchMoviesList(page: Int, apiKey: String){
