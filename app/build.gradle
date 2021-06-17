@@ -18,12 +18,20 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField ("String",  "BASEURL",      "\"https://api.themoviedb.org/3/discover/\"")
+        buildConfigField ("String",  "IMAGES_BASEURL",      "\"https://image.tmdb.org/t/p/w185\"")
+        buildConfigField ("String",  "API_KEY",      "\"91e7cf9e353076bc38be82a9b36f1f17\"")
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        release {
+        debug{
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
