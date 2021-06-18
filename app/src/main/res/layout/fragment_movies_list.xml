@@ -15,10 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMovies"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:clipToPadding="false"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="@dimen/ten_dp"
+                android:paddingBottom="@dimen/ten_dp"
+                android:id="@+id/rvMovies"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -33,7 +43,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:textColor="@color/text_color_secondary"
+        android:textColor="@color/half_black"
         android:fontFamily="@font/archivo_medium"
         android:visibility="gone"
         android:gravity="center"

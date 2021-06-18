@@ -19,7 +19,8 @@ android {
         versionName "1.0"
 
         buildConfigField ("String",  "BASEURL",      "\"https://api.themoviedb.org/3/discover/\"")
-        buildConfigField ("String",  "IMAGES_BASEURL",      "\"https://image.tmdb.org/t/p/w185\"")
+        buildConfigField ("String",  "POSTER_IMAGES_BASEURL",      "\"https://image.tmdb.org/t/p/w300\"")
+        buildConfigField ("String",  "BACKDROP_IMAGES_BASEURL",      "\"https://image.tmdb.org/t/p/w780\"")
         buildConfigField ("String",  "API_KEY",      "\"91e7cf9e353076bc38be82a9b36f1f17\"")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -72,6 +72,7 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
                 when(status){
                     is Status.Loading -> {
                         progressBar.isVisible = status.showLoading
+                        tvError.isVisible = false
                     }
                     is Status.Error -> {
                         status.errorMsg?.let {

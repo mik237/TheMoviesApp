@@ -17,8 +17,8 @@ class ViewStateMapperImpl @Inject constructor(): ViewStateMapper {
                     id = this.id,
                     title = this.title,
                     overview = this.overview,
-                    backdropPath = BuildConfig.IMAGES_BASEURL + this.backdropPath,
-                    posterPath = BuildConfig.IMAGES_BASEURL + this.posterPath,
+                    backdropPath = BuildConfig.BACKDROP_IMAGES_BASEURL + this.backdropPath,
+                    posterPath = BuildConfig.POSTER_IMAGES_BASEURL + this.posterPath,
                     releaseDate = this.releaseDate,
                     voteAverage = this.voteAverage,
                     voteCount = this.voteCount
