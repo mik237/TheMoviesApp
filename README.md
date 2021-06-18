@@ -27,3 +27,5 @@ Application Architecture using MVI architecture.
 
 
 <b>Flow chart diagram link:</b> https://drive.google.com/file/d/1cBQ3hS1vS6WD1jnqxGhZsVCiCtS0ma1c/view?usp=sharing
+
+<b>Download APK link:</b> https://drive.google.com/file/d/1L0sAhJONbiY_l6wLPLKnkhUF_p70HBcG/view?usp=sharing
