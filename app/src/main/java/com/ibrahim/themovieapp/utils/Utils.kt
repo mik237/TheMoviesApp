@@ -42,9 +42,7 @@ object Utils {
         val inputPattern = "yyyy-MM-dd"
         val outputPattern = "MMM dd, yyyy"
         val inputFormat = SimpleDateFormat(inputPattern, Locale.getDefault())
-//        inputFormat.timeZone = TimeZone.getTimeZone("GMT")
         val outputFormat = SimpleDateFormat(outputPattern, Locale.getDefault())
-//        outputFormat.timeZone = TimeZone.getTimeZone("GMT+04:00")
 
         var formattedDateTime = ""
 

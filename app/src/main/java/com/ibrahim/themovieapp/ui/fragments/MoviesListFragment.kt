@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ibrahim.themovieapp.BuildConfig
 import com.ibrahim.themovieapp.R
 import com.ibrahim.themovieapp.adapters.MoviesListAdapter
@@ -30,6 +32,8 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
 
     private val moviesViewModel : MoviesViewModel by activityViewModels()
 
+
+    private var apiCalling: Boolean = false
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding
 
@@ -52,6 +56,7 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
         swipeRefreshList.apply {
             setOnRefreshListener {
                 swipeRefreshList.isRefreshing = false
+                moviesViewModel.currentPage = 1
                 fetchMoviesList()
             }
         }
@@ -62,6 +67,17 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
             rvMovies.apply {
                 layoutManager = GridLayoutManager(it, 2)
                 adapter = moviesAdapter
+
+                addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        val count = (layoutManager as LinearLayoutManager).itemCount
+                        val lastPos = (layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+                        if(lastPos == count-1 && dy > 0 && !apiCalling){ //reach to end
+                            apiCalling = true
+                            fetchMoviesList()
+                        }
+                    }
+                })
             }
         }
     }
@@ -76,6 +92,7 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
                         tvError.isVisible = false
                     }
                     is Status.Error -> {
+                        apiCalling = false
                         status.errorMsg?.let {
                             rvMovies.isVisible = false
                             tvError.apply {
@@ -85,6 +102,7 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
                         }
                     }
                     is Status.Success -> {
+                        apiCalling = false
                         status.data?.let { data ->
                             rvMovies.isVisible = true
                             tvError.isVisible = false
@@ -101,12 +119,13 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
     }
 
     private fun fetchMoviesList() {
-        moviesViewModel.fetchMoviesList(1, BuildConfig.API_KEY)
+        moviesViewModel.fetchMoviesList(BuildConfig.API_KEY)
     }
 
     override fun onMovieItemClicked(movie: Movie) {
         moviesViewModel.selectedMovie.value = movie
-        findNavController().navigate(R.id.action_moviesListFragment_to_moviesDetailFragment)
+        val action = MoviesListFragmentDirections.actionMoviesListFragmentToMoviesDetailFragment()
+        findNavController().navigate(action)
     }
 
     override fun clearResources() {

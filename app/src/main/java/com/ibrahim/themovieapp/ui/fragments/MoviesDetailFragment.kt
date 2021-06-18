@@ -55,9 +55,9 @@ class MoviesDetailFragment : BaseFragment(R.layout.fragment_movies_detail) {
                     tvMovieOverview.text = movie.overview
                     tvVoteAvg.text = resources.getString(R.string.vote_average, movie.voteAverage)
                     tvVoteCount.text = resources.getString(R.string.vote_count, movie.voteCount)
-                    tvReleaseDate.text = resources.getString(R.string.release_date, Utils.formattedDate(movie.releaseDate))
+                    tvReleaseDate.text = resources.getString(R.string.release_date, Utils.formattedDate(movie.releaseDate ?: ""))
 
-                    if(movie.posterPath.isNotEmpty()){
+                    if(!movie.posterPath.isNullOrEmpty()){
                             Glide.with(ivMoviePoster)
                                 .load(movie.posterPath)
                                 .placeholder(R.drawable.iv_placeholder)
@@ -65,7 +65,7 @@ class MoviesDetailFragment : BaseFragment(R.layout.fragment_movies_detail) {
                                 .into(ivMoviePoster)
                     }
 
-                    if(movie.backdropPath.isNotEmpty()){
+                    if(!movie.backdropPath.isNullOrEmpty()){
                             Glide.with(ivBackdrop)
                                 .load(movie.backdropPath)
                                 .placeholder(R.drawable.iv_placeholder)

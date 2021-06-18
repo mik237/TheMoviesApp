@@ -20,32 +20,51 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-        private val mainRepo: MainRepository,
-        private val viewStateMapper : ViewStateMapperImpl
+    private val mainRepo: MainRepository,
+    private val viewStateMapper : ViewStateMapperImpl
 ): ViewModel() {
 
     private val _moviesListLiveData = MutableLiveData<Status<*>>()
 
     var selectedMovie = MutableLiveData<Movie>()
-    var mappedData: List<Movie> = emptyList()
     val statusLiveData : LiveData<Status<*>> = _moviesListLiveData
 
-    fun fetchMoviesList(page: Int, apiKey: String){
-        viewModelScope.launch(Dispatchers.IO) {
-            mainRepo.fetchMoviesList(page, apiKey).collect {
-                withContext(Dispatchers.Main){
-                    when(it){
-                        is Status.Success -> {
-                            val data = it.data as ResponseMoviesList
-                            mappedData = viewStateMapper.mapResultsToMovies(data.results)
-                            _moviesListLiveData.value = Status.Success(mappedData)
-                        }
-                        else -> {
-                            _moviesListLiveData.value = it
+
+    var mappedData = mutableListOf<Movie>()
+    var currentPage = 1
+    private var totalPages = 1
+
+    fun fetchMoviesList(apiKey: String){
+        if(currentPage <= totalPages){
+            viewModelScope.launch(Dispatchers.IO) {
+                mainRepo.fetchMoviesList(currentPage, apiKey).collect {
+                    withContext(Dispatchers.Main){
+                        when(it){
+                            is Status.Success -> {
+                                val data = it.data as ResponseMoviesList
+                                handleMoviesResponse(data)
+                            }
+                            else -> {
+                                _moviesListLiveData.value = it
+                            }
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun handleMoviesResponse(responseMoviesList: ResponseMoviesList) {
+        val newList = viewStateMapper.mapResultsToMovies(responseMoviesList.results).toMutableList()
+        if(currentPage == 1){
+            mappedData.clear()
+            mappedData = newList
+        }
+        else{
+            mappedData.addAll(newList)
+        }
+        _moviesListLiveData.value = Status.Success(mappedData)
+        currentPage++
+        totalPages = responseMoviesList.totalPages
     }
 }
