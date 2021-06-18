@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="250dp"
     android:id="@+id/cv_root"
-    android:layout_margin="@dimen/four_dp"
-    app:cardCornerRadius="@dimen/five_dp">
+    android:layout_margin="@dimen/six_dp"
+    app:cardCornerRadius="@dimen/ten_dp">
 
 
 
@@ -46,7 +46,7 @@
                 android:fontFamily="@font/archivo_bold"
                 android:maxLines="1"
                 android:textColor="@color/white"
-                android:textSize="@dimen/sixteen_sp"
+                android:textSize="@dimen/twenty_six_sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvMovieReleaseDate"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Behind the enemy lines" />
@@ -59,7 +59,7 @@
                 android:fontFamily="@font/archivo_regular"
                 android:maxLines="1"
                 android:textColor="@color/light_white"
-                android:textSize="@dimen/fourteen_sp"
+                android:textSize="@dimen/twenty_sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Jun 09, 2021" />

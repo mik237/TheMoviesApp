@@ -13,11 +13,25 @@ object Utils {
         return (displayMetrics.widthPixels / 2) - marginInPx
     }
 
+    fun getBackdropImgWidth(context: Context, margin: Int) : Float{
+        val displayMetrics = context.resources.displayMetrics
+        val density = displayMetrics.density
+        val marginInPx = margin * density * 2
+        return displayMetrics.widthPixels - marginInPx
+    }
+
     fun getImgHeight(context: Context, margin: Int) : Float{
         val displayMetrics = context.resources.displayMetrics
         val density = displayMetrics.density
         val marginInPx = margin * density * 2
 
         return ((displayMetrics.widthPixels / 3)  * 2.5f) - marginInPx
+    }
+
+    fun getBackdropImgHeight(context: Context, margin: Int) : Float{
+        val displayMetrics = context.resources.displayMetrics
+        val density = displayMetrics.density
+        val marginInPx = margin * density * 2
+        return (displayMetrics.widthPixels / 2) - marginInPx
     }
 }

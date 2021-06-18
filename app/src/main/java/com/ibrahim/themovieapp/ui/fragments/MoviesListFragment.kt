@@ -105,6 +105,7 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
     }
 
     override fun onMovieItemClicked(movie: Movie) {
+        moviesViewModel.selectedMovie.value = movie
         findNavController().navigate(R.id.action_moviesListFragment_to_moviesDetailFragment)
     }
 

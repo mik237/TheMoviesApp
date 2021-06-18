@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ibrahim.themovieapp.R
 import com.ibrahim.themovieapp.databinding.ItemMovieBinding
 import com.ibrahim.themovieapp.ui.fragments.data_models.Movie
@@ -60,6 +62,8 @@ class MoviesListAdapter @Inject constructor():
                     Glide.with(ivMoviePoster)
                         .load(movie.posterPath)
                         .placeholder(R.drawable.iv_placeholder)
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .transition(DrawableTransitionOptions.withCrossFade())
                         .into(ivMoviePoster)
                 }
 
