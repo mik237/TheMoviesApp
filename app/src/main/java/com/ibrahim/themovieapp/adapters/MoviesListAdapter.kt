@@ -63,6 +63,9 @@ class MoviesListAdapter @Inject constructor():
                         .into(ivMoviePoster)
                 }
 
+                root.setOnClickListener {
+                    listener?.onMovieItemClicked(movie)
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ibrahim.themovieapp.BuildConfig
 import com.ibrahim.themovieapp.R
@@ -104,7 +105,7 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
     }
 
     override fun onMovieItemClicked(movie: Movie) {
-
+        findNavController().navigate(R.id.action_moviesListFragment_to_moviesDetailFragment)
     }
 
     override fun clearResources() {
