@@ -57,7 +57,7 @@ class MoviesListAdapter @Inject constructor():
                 cvRoot.layoutParams.height = imgHeight.toInt()
                 cvRoot.layoutParams.width = imgWidth.toInt()
                 tvMovieTitle.text = movie.title
-                tvMovieReleaseDate.text = movie.releaseDate
+                tvMovieReleaseDate.text = Utils.formattedDate(movie.releaseDate)
                 if(movie.posterPath.isNotEmpty()){
                     Glide.with(ivMoviePoster)
                         .load(movie.posterPath)

@@ -1,6 +1,8 @@
 package com.ibrahim.themovieapp.utils
 
 import android.content.Context
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Utils {
 
@@ -33,5 +35,28 @@ object Utils {
         val density = displayMetrics.density
         val marginInPx = margin * density * 2
         return (displayMetrics.widthPixels / 2) - marginInPx
+    }
+
+
+    fun formattedDate(inputDate: String) : String{
+        val inputPattern = "yyyy-MM-dd"
+        val outputPattern = "MMM dd, yyyy"
+        val inputFormat = SimpleDateFormat(inputPattern, Locale.getDefault())
+//        inputFormat.timeZone = TimeZone.getTimeZone("GMT")
+        val outputFormat = SimpleDateFormat(outputPattern, Locale.getDefault())
+//        outputFormat.timeZone = TimeZone.getTimeZone("GMT+04:00")
+
+        var formattedDateTime = ""
+
+        try {
+            val date = inputFormat.parse(inputDate)
+            if (date != null) {
+                formattedDateTime = outputFormat.format(date)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return formattedDateTime
     }
 }
