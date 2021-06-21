@@ -20,6 +20,7 @@ import com.ibrahim.themovieapp.network.Status
 import com.ibrahim.themovieapp.ui.base.BaseFragment
 import com.ibrahim.themovieapp.ui.fragments.data_models.Movie
 import com.ibrahim.themovieapp.ui.viewmodels.MoviesViewModel
+import com.ibrahim.themovieapp.utils.safNavigate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 import javax.inject.Inject
@@ -124,8 +125,8 @@ class MoviesListFragment : BaseFragment(R.layout.fragment_movies_list), OnMovieI
 
     override fun onMovieItemClicked(movie: Movie) {
         moviesViewModel.selectedMovie.value = movie
-        val action = MoviesListFragmentDirections.actionMoviesListFragmentToMoviesDetailFragment()
-        findNavController().navigate(action)
+        val direction = MoviesListFragmentDirections.actionMoviesListFragmentToMoviesDetailFragment()
+        findNavController().safNavigate(direction)
     }
 
     override fun clearResources() {
