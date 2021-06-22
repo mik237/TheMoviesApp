@@ -30,10 +30,19 @@ Application Architecture using MVI architecture.
 
 <b>Download APK link:</b> https://drive.google.com/file/d/1L0sAhJONbiY_l6wLPLKnkhUF_p70HBcG/view?usp=sharing
 
-![Image 1](https://drive.google.com/file/d/1glNfvqn50OmpdgMs7nKJPDKJZkPp7Oo4/view?usp=sharing)
+<table>
+  <tr>
+    <td>Movies List</td>
+     <td>Movie Detail</td>
+  </tr>
+  <tr>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/voteonline2018.appspot.com/o/1.png?alt=media&token=acfea76c-7d9a-4dff-a41a-490092d340eb" width=378 height=777></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/voteonline2018.appspot.com/o/2.png?alt=media&token=b2757682-cc9c-487e-9832-8de244ce5747" width=378 height=777></td>
+  </tr>
+  <tr height="50px"></tr>
+  <tr>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/voteonline2018.appspot.com/o/3.png?alt=media&token=082d0749-6cdb-49f9-ab9d-d0734fa83a8b" width=378 height=777></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/voteonline2018.appspot.com/o/4.png?alt=media&token=4a9802c1-52ba-44e7-941f-2432b6f77fde" width=378 height=777></td>
+  </tr>
+ </table>
 
-![Image 2](https://drive.google.com/file/d/1GBCzsgy8cPKJPO6oclzsMoAjKDexROyW/view?usp=sharing)
-
-![Image 3](https://drive.google.com/file/d/1wYUbZKVkcU-Cqt5w32WEonJlu1K26Vmo/view?usp=sharing)
-
-![Image 4](https://drive.google.com/file/d/1_f7X6IDJiAgqH9e6mtXWB5P8Eumim6oW/view?usp=sharing)
